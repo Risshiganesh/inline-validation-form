@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: grey;
+    color: white;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    /* width: 100%; */
+}
+
+form{
+    display: grid;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 139, 0.363);
+    
+}
+
+fieldset{
+    display: grid;
+    /* border: 1px solid grey; */
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+    
+}
+
+legend{
+    text-align: center;
+}
+
+
+
+
+.input-container{
+    display: grid;
+    margin-bottom: 5px;
+}
+
+label{
+    font-size: 12px;
+}
+
+
+input{
+    height: 20px;
+    color: white;
+    padding: 5px;
+}
+
+
+
+input:invalid,
+select:invalid {
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.116);
+    
+}
+
+select {
+    color: white;
+}
+
+option {
+    color: black;
+}
+
+
+
+.input-invalid {
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.116);
+
+}
+
+.input-valid {
+    border: 1px solid greenyellow;
+    background-color: rgba(153, 205, 50, 0.699)
+}
+
+
+
+.error{
+    background-color: maroon;
+    border-radius: 0px 0px 10px 10px;
+    color: white;
+    
+}
+
+.active{
+
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+
+}
+
+button{
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: yellowgreen;
+    color: white;
+    border: 1px solid gray;
+}
+
+
+
+
+
+
