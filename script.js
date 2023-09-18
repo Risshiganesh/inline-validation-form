@@ -105,6 +105,7 @@ function validateCountry(event) {
     country.className = "input-valid";
     countryError.textContent = "";
     countryError.className = "error";
+    validateZipcode(event);
     return true;
   }
 
