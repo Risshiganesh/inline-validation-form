@@ -19,6 +19,8 @@ body{
     align-items: center;
     height: 100%;
     /* width: 100%; */
+    grid-template-rows: 100px 1fr;
+    position: relative;
 }
 
 form{
@@ -27,6 +29,8 @@ form{
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(0, 0, 139, 0.363);
+    position: absolute;
+    top: 100px;
     
 }
 

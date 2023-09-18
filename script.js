@@ -15,6 +15,8 @@ const passwordError = document.querySelector("#password + span.error");
 const passConf = document.querySelector("#pass-conf");
 const passwordConfError = document.querySelector("#pass-conf + span.error");
 
+const submitStatus = document.querySelector(".submission-status");
+
 email.addEventListener("input", function () {
   validateEmail();
 });
@@ -42,13 +44,23 @@ form.addEventListener("submit", function (e) {
 
 function showError(event) {
   // email validation
-  validateEmail(event);
+  let emailStatus = validateEmail(event);
   // country validation
-  validateCountry(event);
+  let countryStatus = validateCountry(event);
   // zip code
-  validateZipcode(event);
+  let zipcodeStatus = validateZipcode(event);
   // password
-  validatePassword(event);
+  let passwordStatus = validatePassword(event);
+
+  if (!emailStatus || !countryStatus || !zipcodeStatus || !passwordStatus) {
+    submitStatus.textContent = "Submission incomplete, try again";
+  }
+
+  if (emailStatus && countryStatus && zipcodeStatus && passwordStatus) {
+    submitStatus.textContent = "Submission successful, High 5!";
+    // remove this preventDefault in real life use cases (when you actually want the form to submit).
+    event.preventDefault();
+  }
 }
 
 function validateEmail(event) {
@@ -56,6 +68,7 @@ function validateEmail(event) {
     email.className = "input-valid";
     emailError.textContent = "";
     emailError.className = "error";
+    return true;
   }
 
   if (!email.validity.valid) {
@@ -92,6 +105,7 @@ function validateCountry(event) {
     country.className = "input-valid";
     countryError.textContent = "";
     countryError.className = "error";
+    return true;
   }
 
   if (!country.validity.valid) {
@@ -159,18 +173,11 @@ function validateZipcode(event) {
     return;
   }
 
-  console.log(chosenPattern.pattern.test(zipcode.value));
-
   if (chosenPattern.pattern.test(zipcode.value)) {
     zipcode.className = "input-valid";
     zipcodeError.textContent = "";
     zipcodeError.className = "error";
-
-    // console.log("HUHHHHH????");
-    // // remove later
-    // if (event) {
-    //   event.preventDefault();
-    // }
+    return true;
   }
 
   if (!chosenPattern.pattern.test(zipcode.value)) {
@@ -197,6 +204,7 @@ function validatePassword(event) {
     passConf.className = "input-valid";
     passwordConfError.textContent = "";
     passwordConfError.className = "error";
+    return true;
   }
 
   if (password.validity.valueMissing) {
@@ -214,15 +222,6 @@ function validatePassword(event) {
       event.preventDefault();
     }
   }
-
-  //   if (password.validity.valid && passConf.validity.valid) {
-  //       passwordError
-
-  //   }
-
-  //   if (!password.validity.valid && !passConf.validity.valid) {
-
-  //   }
 
   if (password.value !== passConf.value) {
     password.className = "input-invalid";
